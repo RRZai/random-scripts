@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Made By 2prtty4u#8688", "DarkTheme")
- --Real
+ --Real af
 local speed = Window:NewTab("2PRTTY4U")
 local rs = speed:NewSection("MADE BY ZAI")
 
