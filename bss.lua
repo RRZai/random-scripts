@@ -12,7 +12,8 @@ local dispensers = {
     ["Field Booster"] = 45 * 60,
     ["Treat Dispenser"] = 1 * 60 * 60,
     ["Wealth Clock"] = 1 * 60 * 60,
-    ["Coconut Dispenser"] = 4 * 60 * 60
+    ["Coconut Dispenser"] = 4 * 60 * 60,
+    ["Glue Dispenser"] = 22 * 60 * 60
 }
 
 for name, cooldown in pairs(dispensers) do
