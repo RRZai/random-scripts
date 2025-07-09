@@ -1,0 +1,85 @@
+-- Configuration
+local espColor = Color3.fromRGB(0, 255, 0)  -- Bright green
+local toggleKey = Enum.KeyCode.F  -- Change this to your preferred toggle key
+local enabled = false
+
+-- Create ScreenGui for the toggle button
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ESPToggleUI"
+screenGui.Parent = game:GetService("CoreGui") or game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create toggle button
+local toggleButton = Instance.new("TextButton")
+toggleButton.Name = "ToggleButton"
+toggleButton.Size = UDim2.new(0, 100, 0, 50)
+toggleButton.Position = UDim2.new(0, 20, 0.5, -25)
+toggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.Text = "ESP: OFF"
+toggleButton.Parent = screenGui
+
+-- Function to toggle ESP
+local function toggleESP()
+    enabled = not enabled
+    toggleButton.Text = "ESP: " .. (enabled and "ON" or "OFF")
+end
+
+-- Connect toggle button
+toggleButton.MouseButton1Click:Connect(toggleESP)
+
+-- Main ESP function
+local function updateESP()
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player ~= game:GetService("Players").LocalPlayer and player.Character then
+            local character = player.Character
+            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+            
+            if humanoidRootPart then
+                -- Handle chams
+                local cham = humanoidRootPart:FindFirstChild("ESPCham")
+                if not cham then
+                    cham = Instance.new("BoxHandleAdornment")
+                    cham.Name = "ESPCham"
+                    cham.Adornee = humanoidRootPart
+                    cham.AlwaysOnTop = true
+                    cham.ZIndex = 10
+                    cham.Size = Vector3.new(2, 4, 1)
+                    cham.Transparency = 0.5
+                    cham.Color3 = espColor
+                    cham.Parent = humanoidRootPart
+                end
+                cham.Visible = enabled
+                
+                -- Handle nametag
+                local nametag = humanoidRootPart:FindFirstChild("ESPNametag")
+                if not nametag then
+                    nametag = Instance.new("BillboardGui")
+                    nametag.Name = "ESPNametag"
+                    nametag.Adornee = humanoidRootPart
+                    nametag.Size = UDim2.new(0, 100, 0, 50)
+                    nametag.StudsOffset = Vector3.new(0, 3, 0)
+                    nametag.AlwaysOnTop = true
+                    
+                    local nameLabel = Instance.new("TextLabel")
+                    nameLabel.Size = UDim2.new(1, 0, 1, 0)
+                    nameLabel.BackgroundTransparency = 1
+                    nameLabel.Text = player.Name
+                    nameLabel.TextColor3 = espColor
+                    nameLabel.TextStrokeTransparency = 0
+                    nameLabel.Font = Enum.Font.SourceSansBold
+                    nameLabel.TextSize = 14
+                    nameLabel.Parent = nametag
+                    
+                    nametag.Parent = humanoidRootPart
+                end
+                nametag.Enabled = enabled
+            end
+        end
+    end
+end
+
+-- Run ESP update in a loop
+while true do
+    updateESP()
+    wait(1)  -- Update every second to save performance
+end
