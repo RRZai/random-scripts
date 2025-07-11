@@ -33,10 +33,6 @@ end
 
 wait()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/sspy.lua"))()
-
-wait()
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/main/script.lua"))()
 
 wait()
