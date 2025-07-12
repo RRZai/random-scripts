@@ -1,12 +1,10 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/main/script.lua"))()
+
+wait(5)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/servertrack.lua"))()
 
 wait(1)
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/main/script.lua"))()
-
-wait()
-
-
 
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
