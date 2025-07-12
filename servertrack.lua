@@ -10,7 +10,7 @@ local CHECK_INTERVAL = 3600
 
 
 local function getPlayerId(player)
-    return string.format("#%04d", player.UserId % 10000) 
+    return string.format("#%04d", player.UserId % 10000)
 end
 
 
@@ -45,27 +45,29 @@ local function sendToDiscord(content, isLeave)
         timestamp = DateTime.now():ToIsoDate()
     }
 
-
     if isLeave and #Players:GetPlayers() < MAX_PLAYERS then
         content = content.." <@&"..ROLE_ID..">"
     end
 
     pcall(function()
         HttpService:PostAsync(WEBHOOK_URL, HttpService:JSONEncode({
-            content = isLeave and content or nil, 
+            content = isLeave and content or nil,
             embeds = {embed}
         }))
     end)
 end
 
 
+sendToDiscord("Server monitoring activated! [slots "..#Players:GetPlayers().."/"..MAX_PLAYERS.."]", false)
+
+
 Players.PlayerAdded:Connect(function(player)
     welcomePlayer(player)
-    sendToDiscord(string.format("%s joined", getPlayerId(player)), false)
+    sendToDiscord(getPlayerId(player).." joined", false)
 end)
 
 Players.PlayerRemoving:Connect(function(player)
-    sendToDiscord(string.format("%s left", getPlayerId(player)), true)
+    sendToDiscord(getPlayerId(player).." left", true)
 end)
 
 
