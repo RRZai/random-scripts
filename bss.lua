@@ -1,41 +1,6 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/servertrack.lua"))()
 
-wait()
-
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ToyEvent = ReplicatedStorage:WaitForChild("Events"):WaitForChild("ToyEvent")
-
-
-local dispensers = {
-    ["Free Ant Pass Dispenser"] = 2 * 60 * 60,      
-    ["Honey Dispenser"] = 1 * 60 * 60,             
-    ["Blueberry Dispenser"] = 4 * 60 * 60,           
-    ["Blue Field Booster"] = 45 * 60,            
-    ["Red Field Booster"] = 45 * 60,
-    ["Strawberry Dispenser"] = 4 * 60 * 60,
-    ["Field Booster"] = 45 * 60,
-    ["Treat Dispenser"] = 1 * 60 * 60,
-    ["Wealth Clock"] = 1 * 60 * 60,
-    ["Coconut Dispenser"] = 4 * 60 * 60,
-    ["Glue Dispenser"] = 22 * 60 * 60
-}
-
-for name, cooldown in pairs(dispensers) do
-    task.spawn(function()
-        while true do
-            local args = {
-                [1] = name
-            }
-
-            ToyEvent:FireServer(unpack(args))
-            print("Used:", name)
-
-            task.wait(cooldown)
-        end
-    end)
-end
-
-wait()
+wait(1)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/main/script.lua"))()
 
@@ -116,3 +81,36 @@ statusLabel.TextColor3 = Color3.new(0, 1, 0)
 statusLabel.Parent = screenGui
 
 warn("Delta Auto-Rejoin loaded | Server:", lastJobId)
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ToyEvent = ReplicatedStorage:WaitForChild("Events"):WaitForChild("ToyEvent")
+
+
+local dispensers = {
+    ["Free Ant Pass Dispenser"] = 2 * 60 * 60,      
+    ["Honey Dispenser"] = 1 * 60 * 60,             
+    ["Blueberry Dispenser"] = 4 * 60 * 60,           
+    ["Blue Field Booster"] = 45 * 60,            
+    ["Red Field Booster"] = 45 * 60,
+    ["Strawberry Dispenser"] = 4 * 60 * 60,
+    ["Field Booster"] = 45 * 60,
+    ["Treat Dispenser"] = 1 * 60 * 60,
+    ["Wealth Clock"] = 1 * 60 * 60,
+    ["Coconut Dispenser"] = 4 * 60 * 60,
+    ["Glue Dispenser"] = 22 * 60 * 60
+}
+
+for name, cooldown in pairs(dispensers) do
+    task.spawn(function()
+        while true do
+            local args = {
+                [1] = name
+            }
+
+            ToyEvent:FireServer(unpack(args))
+            print("Used:", name)
+
+            task.wait(cooldown)
+        end
+    end)
+end
