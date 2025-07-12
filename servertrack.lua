@@ -22,7 +22,7 @@ end
 local function welcomePlayer(player)
     if chatrem then
         chatrem:FireServer(
-            string.format("ong join up /mAmQxNGCR6 for whenever slots are available | welcome %s [slot %d/%d]", 
+            string.format("mAmQxNGCR6 | welcome %s [slot %d/%d]", 
             getPlayerIdentifier(player), #Players:GetPlayers(), MAX_PLAYERS), 
             "All"
         )
