@@ -1,12 +1,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ToyEvent = ReplicatedStorage:WaitForChild("Events"):WaitForChild("ToyEvent")
 
--- Dispensers and their cooldowns in seconds
+
 local dispensers = {
-    ["Free Ant Pass Dispenser"] = 2 * 60 * 60,       -- 2 hours
-    ["Honey Dispenser"] = 1 * 60 * 60,               -- 1 hour
-    ["Blueberry Dispenser"] = 4 * 60 * 60,           -- 4 hours
-    ["Blue Field Booster"] = 45 * 60,                -- 45 minutes
+    ["Free Ant Pass Dispenser"] = 2 * 60 * 60,      
+    ["Honey Dispenser"] = 1 * 60 * 60,             
+    ["Blueberry Dispenser"] = 4 * 60 * 60,           
+    ["Blue Field Booster"] = 45 * 60,            
     ["Red Field Booster"] = 45 * 60,
     ["Strawberry Dispenser"] = 4 * 60 * 60,
     ["Field Booster"] = 45 * 60,
@@ -37,6 +37,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/m
 
 wait()
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/servertrack.lua"))()
+
+wait()
 
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
@@ -77,7 +80,6 @@ local function reconnect()
         if success then return end
     end
     
-    -- Fallback to normal rejoin
     pcall(function()
         if string.find(lastJobId, "PrivateServer") then
             local accessCode = getAccessCode(SERVER_LINK) or lastJobId:split("|")[2]
