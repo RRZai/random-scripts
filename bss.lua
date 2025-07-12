@@ -1,3 +1,7 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/servertrack.lua"))()
+
+wait()
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ToyEvent = ReplicatedStorage:WaitForChild("Events"):WaitForChild("ToyEvent")
 
@@ -37,9 +41,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/m
 
 wait()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RRZai/random-scripts/refs/heads/main/servertrack.lua"))()
 
-wait()
 
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
